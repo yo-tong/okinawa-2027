@@ -1,0 +1,165 @@
+<section id="okinawa-style-preview" class="viz-dotted-background" aria-label="沖繩手帳手機版行程示意">
+  <div class="journal-screen">
+    <header class="journal-header">
+      <span class="journal-brand">沖繩 2027</span>
+      <span class="journal-section">每日行程</span>
+    </header>
+    <div class="journal-content">
+      <nav class="journal-dates" aria-label="選擇旅行日期">
+        <button type="button" data-day="0" aria-pressed="true">1/11</button>
+        <button type="button" data-day="1" aria-pressed="false">1/12</button>
+        <button type="button" data-day="2" aria-pressed="false">1/13</button>
+        <button type="button" data-day="3" aria-pressed="false">1/14</button>
+        <button type="button" data-day="4" aria-pressed="false">1/15</button>
+      </nav>
+      <div class="journal-day" aria-live="polite">
+        <h2>那霸初見</h2>
+        <p class="journal-route">旭橋・泊港・那霸 Main Place</p>
+        <ol class="journal-timeline">
+          <li><span>約 13:40</span><strong>旭橋飯店寄放行李</strong><small>提前寄放需向飯店確認。</small></li>
+          <li><span>寄放後</span><strong>泊港魚市場</strong><small>部分店家售完會提早打烊。</small></li>
+          <li><span>接著</span><strong>3COINS+plus</strong><small>暫排那霸 Main Place 1 樓。</small></li>
+        </ol>
+        <p class="journal-note"><strong>彈性安排</strong> 國際通散步，晚餐待定。</p>
+      </div>
+    </div>
+  </div>
+</section>
+<style>
+  #okinawa-style-preview {
+    --paper: light-dark(#fff9eb, #28271f);
+    --ink: light-dark(#233d37, #f4ead5);
+    --sea: light-dark(#25584f, #a6d4c3);
+    --accent-ink: light-dark(#984a3c, #f2b5a3);
+    --subtle: light-dark(#59645a, #c1c9bc);
+    --line: light-dark(#d8c9ae, #585342);
+    --note: light-dark(#f4e7c9, #353022);
+    padding: 14px 8px;
+    color: var(--ink);
+    font: 15px/1.5 system-ui, "Microsoft JhengHei", sans-serif;
+  }
+  #okinawa-style-preview *, #okinawa-style-preview *::before { box-sizing: border-box; }
+  #okinawa-style-preview .journal-screen {
+    max-width: 392px;
+    margin: 0 auto;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: var(--paper);
+    overflow: hidden;
+  }
+  #okinawa-style-preview .journal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 19px;
+    background: var(--note);
+    border-bottom: 1px solid var(--line);
+  }
+  #okinawa-style-preview .journal-brand { color: var(--sea); font-weight: 750; letter-spacing: .08em; }
+  #okinawa-style-preview .journal-section { color: var(--subtle); font-size: .875rem; }
+  #okinawa-style-preview .journal-content { padding: 0 19px 18px; }
+  #okinawa-style-preview .journal-dates {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 4px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  #okinawa-style-preview .journal-dates button {
+    appearance: none;
+    padding: 0 3px;
+    min-width: 0;
+    min-height: 44px;
+    border: 1px solid transparent;
+    border-radius: 5px 7px 5px 5px;
+    background: transparent;
+    color: var(--sea);
+    font: 650 .875rem/1.3 system-ui, sans-serif;
+  }
+  #okinawa-style-preview .journal-dates button[aria-pressed="true"] {
+    background: var(--sea);
+    color: var(--paper);
+  }
+  #okinawa-style-preview .journal-day h2 {
+    margin: 15px 0 2px;
+    color: var(--sea);
+    font: 750 1.7rem/1.35 "Noto Serif TC", "PMingLiU", "Songti TC", serif;
+  }
+  #okinawa-style-preview .journal-route { margin: 0; color: var(--subtle); font-size: .875rem; }
+  #okinawa-style-preview .journal-timeline { margin: 13px 0 15px; padding: 0; list-style: none; }
+  #okinawa-style-preview .journal-timeline li {
+    display: grid;
+    grid-template-columns: 68px minmax(0, 1fr);
+    column-gap: 8px;
+    padding: 9px 0;
+    border-bottom: 1px dashed var(--line);
+  }
+  #okinawa-style-preview .journal-timeline li > span { color: var(--accent-ink); font-weight: 700; font-size: .8rem; align-self: center; }
+  #okinawa-style-preview .journal-timeline small { grid-column: 2; color: var(--subtle); font-size: .8125rem; }
+  #okinawa-style-preview .journal-note {
+    margin: 0;
+    padding: 8px 10px;
+    background: var(--note);
+    border-inline-start: 2px solid var(--accent-ink);
+    font-size: .8125rem;
+  }
+</style>
+<script>
+  (() => {
+    const root = document.getElementById('okinawa-style-preview');
+    const dates = [...root.querySelectorAll('[data-day]')];
+    const title = root.querySelector('h2');
+    const route = root.querySelector('.journal-route');
+    const timeline = root.querySelector('.journal-timeline');
+    const note = root.querySelector('.journal-note');
+    const days = [
+      ['那霸初見', '旭橋・泊港・那霸 Main Place', [
+        ['約 13:40', '旭橋飯店寄放行李', '提前寄放需向飯店確認。'],
+        ['寄放後', '泊港魚市場', '部分店家售完會提早打烊。'],
+        ['接著', '3COINS+plus', '暫排那霸 Main Place 1 樓。']
+      ], '國際通散步，晚餐待定。'],
+      ['往北看海', '萬座毛・古宇利島・美麗海・美國村', [
+        ['08:10', 'Palette 久茂地集合', '預留集合時間。'],
+        ['白天', '北部一日遊', '萬座毛、古宇利島及美麗海水族館。'],
+        ['傍晚', '美國村下車', '自由逛街及晚餐。']
+      ], '返回那霸的公車班次待確認。'],
+      ['水族館與購物日', 'iias 沖繩豐崎・ASHIBINAA Outlet', [
+        ['08:00 前', '國際通入口候車', '08:15 TK02 為暫定班次。'],
+        ['上午', 'DMM Kariyushi 水族館', '入館時間待核對。'],
+        ['下午', 'ASHIBINAA Outlet', '購物後搭車回旭橋。']
+      ], '國際通晚餐與自由活動。'],
+      ['南部到瀨長島', '玉泉洞・瀨長島', [
+        ['07:50', '南部一日遊集合', '攜帶行李前往縣民廣場。'],
+        ['白天', '沖繩世界・玉泉洞', '核對門票是否含在團費內。'],
+        ['傍晚', '瀨長島入住', '提前下車須取得業者確認。']
+      ], '視抵達時間到海風露台。'],
+      ['從那霸返程', '瀨長島・那霸機場', [
+        ['早上', '早餐與退房', '預留前往機場及辦理報到時間。'],
+        ['約 09:30', '抵達那霸機場', '建議搭計程車。'],
+        ['12:40', '搭機返回高雄', '起飛時間以航班訂單為準。']
+      ], '航班與時間依航空公司通知。']
+    ];
+
+    for (const button of dates) {
+      button.addEventListener('click', () => {
+        const [name, places, rows, extra] = days[Number(button.dataset.day)];
+        for (const date of dates) date.setAttribute('aria-pressed', String(date === button));
+        title.textContent = name;
+        route.textContent = places;
+        timeline.replaceChildren(...rows.map(row => {
+          const item = document.createElement('li');
+          for (const [i, tag] of ['span', 'strong', 'small'].entries()) {
+            const field = document.createElement(tag);
+            field.textContent = row[i];
+            item.append(field);
+          }
+          return item;
+        }));
+        const label = document.createElement('strong');
+        label.textContent = '彈性安排';
+        note.replaceChildren(label, ' ' + extra);
+      });
+    }
+  })();
+</script>
